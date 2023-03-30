@@ -1,6 +1,6 @@
+
 const mongoose = require('mongoose');
 
-// Import of the model Recipe from './models/Recipe.model.js'
 const Recipe = require('./models/Recipe.model');
 // Import of the data from './data.json'
 const data = require('./data');
@@ -16,8 +16,10 @@ mongoose
     return Recipe.deleteMany()
   })
   .then(() => {
-    // Run your code here, after you have insured that the connection was made
-  })
+    const carbonara = { name: "Carbonara", cuisine: "Italian"}
+    return Recipe.create(carbonara)
+  
+  }) .then(newRecipe => console.log('Nova Receita criada', newRecipe))
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
